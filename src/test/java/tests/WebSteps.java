@@ -6,7 +6,7 @@ import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+
 
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
@@ -34,6 +34,11 @@ public class WebSteps {
     @Step("Открываем таб Issues")
     public void openIssueTab() {
         $("#issues-tab").click();
+    }
+
+    @Step("Проверяем наличие Issues с текстом {nameissue}")
+    public void shouldHaveIssueWithText(String nameissue) {
+        $(withText(nameissue)).should(Condition.visible);
     }
 
     @Step("Проверяем наличие Issue c номером {issue}")
